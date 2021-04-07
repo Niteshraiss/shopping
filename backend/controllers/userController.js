@@ -1,10 +1,11 @@
-import User from '../models/userModel.js';
 import asyncHandler from 'express-async-handler';
 import generateToken from '../utils/generateTokens.js'
+import User from '../models/userModel.js';
 
 //Authentication  or Login
 const authUser = asyncHandler(async (req, res) => {
     const { email, password } = req.body;
+    console.log('password to match is --', password);
     const user = await User.findOne({ email })
     if (user && (await user.matchPassword(password))) {
         res.json({
@@ -14,7 +15,8 @@ const authUser = asyncHandler(async (req, res) => {
             isAdmin: user.isAdmin,
             token: generateToken(user._id)
         })
-    } else {
+    }
+    else {
         res.status(401)
         throw new Error('Invalid email or password');
     }
