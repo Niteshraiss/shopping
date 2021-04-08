@@ -1,5 +1,5 @@
 import asyncHandler from 'express-async-handler'
-import generateToken from '../utils/generateToken.js'
+import generateToken from '../utils/generateTokens.js'
 import User from '../models/userModel.js'
 
 // @desc    Auth user & get token
@@ -7,7 +7,6 @@ import User from '../models/userModel.js'
 // @access  Public
 const authUser = asyncHandler(async (req, res) => {
     const { email, password } = req.body
-
     const user = await User.findOne({ email })
 
     if (user && (await user.matchPassword(password))) {
@@ -75,3 +74,8 @@ const getUserProfile = asyncHandler(async (req, res) => {
         throw new Error('User not found')
     }
 })
+export {
+    authUser,
+    registerUser,
+    getUserProfile
+}
