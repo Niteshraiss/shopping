@@ -4,8 +4,10 @@ import HomeScreen from './screens/HomeScreen';
 import CartScreen from './screens/CartScreen';
 import { Container } from 'react-bootstrap';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
-import ProductScreen from './screens/ProductScreen'
-import LoginScreen from "./screens/LoginScreen"
+import ProductScreen from './screens/ProductScreen';
+import LoginScreen from "./screens/LoginScreen";
+import RegisterScreen from "./screens/RegisterScreen";
+import ProfileScreen from "./screens/ProfileScreen";
 const App = () => {
   return (
     <Router>
@@ -15,6 +17,8 @@ const App = () => {
           <Route path='/' component={HomeScreen} exact></Route>
           <Route path='/product/:id' component={ProductScreen}></Route>
           <Route path='/login' component={LoginScreen}></Route>
+          <Route path='/register' component={RegisterScreen}></Route>
+          <Route path='/profile' component={ProfileScreen}></Route>
           <Route path='/cart/:id?' component={CartScreen}></Route>
         </Container>
       </main>
