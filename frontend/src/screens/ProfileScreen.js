@@ -7,23 +7,21 @@ import Loader from '../components/Loader';
 import { USER_UPDATE_PROFILE_RESET } from '../constants/userConstants'
 
 const ProfileScreen = ({ location, history }) => {
-    const [name, setName] = useState('');
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    const [confirmpassword, setConfirmPassword] = useState('');
-    const [message, setMessage] = useState(null);
-
-    const dispatch = useDispatch();
+    const [name, setName] = useState('')
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
+    const [confirmPassword, setConfirmPassword] = useState('')
+    const [message, setMessage] = useState(null)
+    const dispatch = useDispatch()
 
     const userDetails = useSelector((state) => state.userDetails)
     const { loading, error, user } = userDetails
 
-
     const userLogin = useSelector((state) => state.userLogin)
-    const { userInfo } = userLogin;
+    const { userInfo } = userLogin
 
     const userUpdateProfile = useSelector((state) => state.userUpdateProfile)
-    const { success } = userUpdateProfile;
+    const { success } = userUpdateProfile
 
     useEffect(() => {
         if (!userInfo) {
@@ -41,14 +39,13 @@ const ProfileScreen = ({ location, history }) => {
 
     const submitHandler = (e) => {
         e.preventDefault()
-        //dispatch register
-        if (password !== confirmpassword) {
-            setMessage("Password do not match");
+        if (password !== confirmPassword) {
+            setMessage('Passwords do not match')
         } else {
-            dispatch(updateUserProfile({ id: user._id, name, email, password }));
-
+            dispatch(updateUserProfile({ id: user._id, name, email, password }))
         }
     }
+
 
     return <Row>
         <Col md={3}>
@@ -83,7 +80,7 @@ const ProfileScreen = ({ location, history }) => {
 
                 <Form.Group controlId="confirmpassword">
                     <Form.Label>Confirm password</Form.Label>
-                    <Form.Control type="password" placeholder="Confirm password" value={confirmpassword}
+                    <Form.Control type="password" placeholder="Confirm password" value={confirmPassword}
                         onChange={(e) => setConfirmPassword(e.target.value)}>
                     </Form.Control>
                 </Form.Group>
