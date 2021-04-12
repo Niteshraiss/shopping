@@ -4,7 +4,7 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Message from '../components/Message';
 import { Row, Col, ListGroup, Image, Form, Button, Card, ListGroupItem } from 'react-bootstrap';
-import { addToCart, removeFromCart } from '../actions/cardActions';
+import { addToCart, removeFromCart } from '../actions/cartActions';
 
 
 const CartScreen = ({ match, location, history }) => {
